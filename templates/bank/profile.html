@@ -1,0 +1,155 @@
+{% extends 'bank_base.html' %}
+{% block title %} USER PROFILE {% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12 bg-white">
+            <div class="text-center">
+                <a href="{% url 'bank:transactions' profile.user.pk %}" class="btn btn-secondary"> Transactions </a>
+                <a href="{% url 'bank:edit_profile' profile.user.pk %}" class="btn btn-info"> Edit Account </a>
+                <a id="delete_account" href="{% url 'bank:delete_account' profile.user.pk %}" class="btn btn-danger"> 
+                    Delete Account 
+                    <script>
+                        document.getElementById("delete_account").addEventListener('click', (e) => {
+                            if (!confirm("Are you sure you want to delete this account?")) {
+                                e.preventDefault();
+                            }
+                        });
+                    </script>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="text-center mb-2">
+                <img src="{{ profile.image.url }}" alt="not found" width="200px" height="200px">
+            </div>
+            <div class="card shadow bg-white text-dark p-3">
+                <ul class="list-unstyled">
+                    <li>Account No.: <span style="font-weight: bolder; font-size: 24px;">{{ profile.account_number}}</span> </li>
+                    <li>Account Type: <span style="font-weight: bolder; font-size: 24px;">{{ profile.account_type}}</span> </li>
+                    <li>Bal: <span style="font-weight: bolder; font-size: 24px;">₵ {{ profile.account_balance }}</span> </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="bg-white shadow text-dark p-3 card">
+                <br>
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            First Name
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.user.first_name }}
+                            </span>
+                        </div>
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Last Name
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.user.last_name }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Phone Number
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.phone_number }}
+                            </span>
+                        </div>
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Digital Adress
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.digital_address }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Gender
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.sex}}
+                            </span>
+                        </div>
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Date of Birth
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.dob }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Next of Kin [full name]
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.next_of_kin }}
+                            </span>
+                        </div>
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Next of Kin Phone Number
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.next_of_kin_phone_number }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Next of Kin Digital Adress
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.next_of_kin_digital_address }}
+                            </span>
+                        </div>
+                        <div class="col-8 col-md-6 card shadow-none">
+                            Registered Date
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.user.date_joined }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            ID Type
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.id_type }}
+                            </span>
+                        </div>
+                        <div class="col-8 col-md-6 card shadow-none">
+                            ID No.
+                            <span style="background-color: aliceblue;" class="p-2 text-uppercase">
+                                {{ profile.id_number }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-8 col-md-6 card shadow-none">
+                            E-mail
+                            <span style="background-color: aliceblue;" class="p-2">
+                                {{ profile.user.email }}
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+         
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

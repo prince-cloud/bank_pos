@@ -1,0 +1,262 @@
+{% extends 'bank_base.html' %}
+{% block title %} REGISTER {% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-12 px-1">
+
+        <div class="row d-flex align-items-center  justify-content-center ">
+            <div class="col-md-12">
+                <div class="bg-gray px-3 px-sm-4 p-md-5 shadow white-bg">
+                    <h3 class="text-center text-bolder text-dark">Update Account</h3>
+                    <small class="text-center"> fields marked (*) are mandatory </small>
+                    <br>
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <div class="alert alert-error">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                        <div class="alert alert-error">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+
+                    <form method="POST" enctype="multipart/form-data" class="bg-white text-dark shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        {% csrf_token %}
+                        
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ user_form.first_name.id_for_label }}">
+                                    {{ user_form.first_name.label }}
+                                </label>
+                                {{ user_form.first_name }}
+                                {% if user_form.first_name.errors %}
+                                    {% for error in user_form.first_name.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ user_form.last_name.id_for_label }}">
+                                    {{ user_form.last_name.label }}
+                                </label>
+                                {{ user_form.last_name }}
+                                {% if user_form.last_name.errors %}
+                                    {% for error in user_form.last_name.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ user_form.email.id_for_label }}">
+                                    {{ user_form.email.label }}
+                                </label>
+                                {{ user_form.email }}
+                                {% if user_form.email.errors %}
+                                    {% for error in user_form.email.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.phone_number.id_for_label }}">
+                                    {{ profile_form.phone_number.label }}
+                                </label>
+                                {{ profile_form.phone_number }}
+                                {% if profile_form.phone_number.errors %}
+                                    {% for error in profile_form.phone_number.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.dob.id_for_label }}">
+                                    {{ profile_form.dob.label }}
+                                </label>
+                                {{ profile_form.dob }}
+                                {% if profile_form.dob.errors %}
+                                    {% for error in profile_form.dob.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.sex.id_for_label }}">
+                                    {{ profile_form.sex.label }}
+                                </label>
+                                {{ profile_form.sex }}
+                                {% if profile_form.sex.errors %}
+                                    {% for error in profile_form.sex.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.digital_address.id_for_label }}">
+                                    {{ profile_form.digital_address.label }}
+                                </label>
+                                {{ profile_form.digital_address }}
+                                {% if profile_form.digital_address.errors %}
+                                    {% for error in profile_form.digital_address.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.next_of_kin.id_for_label }}">
+                                    {{ profile_form.next_of_kin.label }}
+                                </label>
+                                {{ profile_form.next_of_kin }}
+                                {% if profile_form.next_of_kin.errors %}
+                                    {% for error in profile_form.next_of_kin.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.next_of_kin_phone_number.id_for_label }}">
+                                    {{ profile_form.next_of_kin_phone_number.label }}
+                                </label>
+                                {{ profile_form.next_of_kin_phone_number }}
+                                {% if profile_form.next_of_kin_phone_number.errors %}
+                                    {% for error in profile_form.next_of_kin_phone_number.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.next_of_kin_digital_address.id_for_label }}">
+                                    {{ profile_form.next_of_kin_digital_address.label }}
+                                </label>
+                                {{ profile_form.next_of_kin_digital_address }}
+                                {% if profile_form.next_of_kin_digital_address.errors %}
+                                    {% for error in profile_form.next_of_kin_digital_address.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.account_type.id_for_label }}">
+                                    {{ profile_form.account_type.label }}
+                                </label>
+                                {{ profile_form.account_type }}
+                                {% if profile_form.account_type.errors %}
+                                    {% for error in profile_form.account_type.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.account_balance.id_for_label }}">
+                                    {{ profile_form.account_balance.label }}
+                                </label>
+                                {{ profile_form.account_balance }}
+                                {% if profile_form.account_balance.errors %}
+                                    {% for error in profile_form.account_balance.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.id_type.id_for_label }}">
+                                    {{ profile_form.id_type.label }}
+                                </label>
+                                {{ profile_form.id_type }}
+                                {% if profile_form.id_type.errors %}
+                                    {% for error in profile_form.id_type.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.id_number.id_for_label }}">
+                                    {{ profile_form.id_number.label }}
+                                </label>
+                                {{ profile_form.id_number }}
+                                {% if profile_form.id_number.errors %}
+                                    {% for error in profile_form.id_number.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-12 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ profile_form.image.id_for_label }}">
+                                    {{ profile_form.image.label }}
+                                </label>
+                                {{ profile_form.image }}
+                                {% if profile_form.image.errors %}
+                                    {% for error in profile_form.image.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ user_form.password.id_for_label }}">
+                                    {{ user_form.password.label }}
+                                </label>
+                                {{ user_form.password }}
+                                {% if user_form.password.errors %}
+                                    {% for error in user_form.password.errors %}
+                                        <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-8 col-md-6 card shadow-none">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ user_form.password2.id_for_label }}">
+                                    {{ user_form.password2.label }}
+                                </label>
+                                {{ user_form.password2 }}
+                                {% if user_form.password2.errors %}
+                                    {% for error in user_form.password2.errors %}
+                                    <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <p><input class="btn btn-dark btn-large" type="submit" value="Update Profile"></p>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

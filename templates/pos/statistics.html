@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12 float-left text-center"><h2 class="display-4 text-white">Out of Stock</h2></div>
+    </div>
+</div>
+
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-12">
+            <table class="table shadow  table-hover table-striped white-bg">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th> # </th>
+                        <th> Product  </th>
+                        <th> Quantity </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td> {{ forloop.counter }} </td>
+                        <td> {{ product.name}} </td>
+                        <td> {{ product.available_quantity }} </td>
+                    </tr>
+                    {% empty %}
+                    <tr >
+                        <td colspan="7"> <h4>No product out of stock </h4> </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

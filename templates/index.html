@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row text-center align-items-center justify-content-center">
+       <h2 class="mt-4 text-white">AUTHENTIC Ventures &  AUTHENTIC Banking </h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row text-center d-flex align-items-center py-5 justify-content-center h-min-100vh">
+        <div class="col-md-6 text-center">
+            <div class="m-3 card grey-bg shadow">
+                <a href="{% url 'bank:bank_index' %}" class="link">
+                    <img class="ind-img" src="{% static 'images/purchases.png' %}" alt="img not found">
+                    <h3 class=""> BANKING </h3>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="m-3 card grey-bg shadow">
+                <a class="link" href="{% url 'pos:pos_index' %}">
+                    <img class="ind-img" src="{% static 'images/itemlist.png' %}" alt="img not found">
+                    <h3 class=""> POS </h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

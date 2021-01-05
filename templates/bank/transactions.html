@@ -1,0 +1,120 @@
+{% extends 'bank_base.html' %}
+{% block title %} USER PROFILE {% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container">
+        <div class="d-flex justify-content-center row pb-3">
+
+
+            <div class="col-3 mt-2">
+                <input type="number" class="form-control" placeholder="day" id="day">
+            </div>
+            <div class="col-3 mt-2">
+                <input type="number" class="form-control" placeholder="month" id="month">
+            </div>
+            <div class="col-3 mt-2">
+                <input type="number" class="form-control" placeholder="year" id="year">
+            </div>
+    
+            <div class="col-3">
+                <button class="btn btn-success" id="filter">Search</button>
+            </div>
+    
+            <script>
+                let year = document.getElementById("year");
+                let month = document.getElementById("month");
+                let day = document.getElementById("day");
+                let filter = document.getElementById("filter");
+    
+                filter.addEventListener("click", function (e) {
+    
+                    let _year = parseInt(year.value);
+                    let _month = parseInt(month.value);
+                    let _day = parseInt(day.value);
+                    
+                    let route = "{% url 'bank:transactions' user.pk %}";
+                    if (_year !== NaN && _year > 0) {
+                        route += + _year;
+                        if (_month !== NaN && _month > 0) {
+                            route += '/' + _month;
+                            if (_day !== NaN && _day > 0) {
+                                route += '/' + _day;
+                            }
+                        }
+                    }
+                    window.location = route;
+                });
+            </script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-center text-white">Deposites</h4>
+            <table class="table shadow table-striped table-hover white-bg">
+                <thead class="bg-dark text-white ">
+                    <tr>
+                        <th> # </th>
+                        <th> Date </th>
+                        <th> Amount </th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for deposite in deposites %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ deposite.date_created }}</td>
+                        <td class="text-uppercase"> GH₵  {{ deposite.amount }} </td> 
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">
+                            {% if search_query %}
+                            <h3>Sorry, there is no customer with an account number <span class="text-danger">'{{ search_query }}' </span> </h3>
+                            {% else %}
+                            <h1>Sorry, there are no deposite history</h2>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="col-md-6">
+            <h4 class="text-center text-white">Withdrawals</h4>
+            <table class="table shadow table-striped table-hover white-bg">
+                <thead class="bg-dark text-white ">
+                    <tr>
+                        <th> # </th>
+                        <th> Date </th>
+                        <th> Amount </th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for withdrawal in withdrawals %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ withdrawal.date_created }}</td>
+                        <td class="text-uppercase"> GH₵  {{ withdrawal.amount }} </td> 
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">
+                            {% if search_query %}
+                            <h3>Sorry, there is no customer with an account number <span class="text-danger">'{{ search_query }}' </span> </h3>
+                            {% else %}
+                            <h1>Sorry, there are no withdrawal history<h2>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

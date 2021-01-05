@@ -1,0 +1,279 @@
+body{
+  background-color: rgba(197, 197, 197, 0.432);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: url(../images/background.jpg);
+  background-repeat: none;
+  object-fit: cover;
+  color: white;
+}
+.containers-history {
+  background: #ecf0f1;
+  width: 90%;
+  text-align: center;
+}
+
+.header-search-form input{
+  height: 60px;
+  margin: 0;
+  border: none;
+  
+}
+.header-search-form input[type='text']{
+  width: 70%;
+  padding: 5px 15px;
+}
+.header-search-form input[type='text']:focus{
+  border: none !important;
+}
+.header-search-form input[type="submit"]{
+  width: 30%;
+}
+.header-search-form{
+  display: flex;
+  align-items: center;
+ 
+}
+.bg-gray{
+  background: #999;
+}
+
+.logo{
+  background: url("briann_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.py-5vh{
+  background-color: teal;
+}
+
+.login-main-page{
+  background-color: rgb(0, 128, 128, 0.2);
+}
+
+.login-page {
+  padding-top: 5%;
+}
+
+.login-page form{
+  color: white;
+}
+
+.r-5 {
+  border-radius: 5px;
+}
+
+.full-screen{
+  min-height: 100vh !important;
+}
+
+.myoverlay{
+  position: fixed;
+  display: none;
+  transition: display 0.5s;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  background: rgba(255,255,255,.9);
+ 
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+.myoverlay.show{
+  display: flex;
+  animation: 1s ease-in-out show;
+}
+
+.navbar .nav-item {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.myclose {
+  position: absolute;
+  top: 20px;
+  right: 10%;
+  color: white;
+}
+
+
+/* table css */
+#itemtable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #itemtd, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  #itemtr:nth-child(even) {
+    background-color: rgba(167, 250, 250, 0.5)
+  }
+  #itemtr:nth-child(odd) {
+    background-color: rgb(255, 255, 255);
+  }
+
+  #idlink{
+    color: black;
+    text-decoration: none;
+}
+
+
+/* navbar items */
+.nav-item{
+  text-align: center;
+}
+
+.nav-link:hover{
+  background-color: white;
+  color: white;
+  border-radius: 3px;    
+}
+
+/* footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* index */
+.ind-img{
+  width: 150px;
+  height: 150px;
+}
+
+/* custom */
+.text-bolder{
+  font-weight: bolder;
+  color: red;
+}
+/* end custom */
+.link{
+  text-decoration: none;
+  color: rgb(44, 44, 44);
+}
+
+.grey-bg:hover{
+  background-color: rgb(218, 218, 218);
+  color: white;
+}
+
+.white-bg{
+  background-color: white;
+}
+
+.b-radius{
+  border-radius: 9px;
+}
+
+.title{
+  font-weight: 600;
+}
+
+.-mx-3 {
+  margin-left: -.75rem;
+  margin-right: -.75rem
+}
+
+.w-full {
+  width: 100%
+}
+
+.tracking-wide {
+  letter-spacing: .025em
+}
+
+.text-gray-700 {
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity))
+}
+
+.text-xs {
+  font-size: .75rem
+}
+
+.font-bold {
+  font-weight: 700
+}
+
+.text-red-600 {
+  --text-opacity: 1;
+  color: #e53e3e;
+  color: rgba(229, 62, 62, var(--text-opacity))
+}
+
+.text-sm {
+  font-size: .875rem
+}
+
+.italic {
+  font-style: italic
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
+}
+
+.bg-gray-200 {
+  --bg-opacity: 1;
+  background-color: #edf2f7;
+  background-color: rgba(237, 242, 247, var(--bg-opacity))
+}
+
+.border-gray-200 {
+  --border-opacity: 1;
+  border-color: #edf2f7;
+  border-color: rgba(237, 242, 247, var(--border-opacity))
+}
+
+.rounded {
+  border-radius: .25rem
+}
+
+.leading-tight {
+  line-height: 1.25
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px
+}
+
+.bg-white {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity))
+}
+
+.border-gray-500 {
+  --border-opacity: 1;
+  border-color: #a0aec0;
+  border-color: rgba(160, 174, 192, var(--border-opacity))
+}
+
+.flex-wrap {
+  flex-wrap: wrap
+}
