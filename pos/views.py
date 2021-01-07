@@ -61,7 +61,7 @@ def add_product(request):
             redirect_url = request.GET.get("next")
             if redirect_url is not None:
                 redirect(redirect_url)
-    return redirect('items_list')
+    return redirect('/pos/items_list')
 
 
 @login_required
@@ -74,7 +74,7 @@ def add_expense(request):
             messages.info(request, 'Expense Successfully added')
             #if redirect_url is not None:
                 #redirect(redirect_url)
-    return redirect('history')
+    return redirect('/pos/history/')
 
 
 @login_required
@@ -89,7 +89,7 @@ def add_supply(request):
                 redirect(redirect_url)
         else:
             messages.warning(request, "There was an error in the data entered")
-    return redirect('items_list')
+    return redirect('/pos/items_list')
 
 
 @login_required
@@ -117,6 +117,7 @@ def add_purchase(request):
             purchase.save()
 
             messages.info(request, "Item Successfully Purchased")
+            return redirect('/pos/items_list')
             redirect_url = request.GET.get("next")
 
             #if your want add printing
@@ -127,7 +128,7 @@ def add_purchase(request):
                 return redirect(redirect_url)
         else:
             messages.warning(request, "There was an error in the data entered")
-    return redirect('items_list')
+    return redirect('/pos/items_list')
 
 
 @login_required

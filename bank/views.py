@@ -9,8 +9,9 @@ from . import forms
 from django.shortcuts import redirect, get_object_or_404
 import random
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
 
-@login_required
+@staff_member_required
 def bank_index(request):
     total_balance = 0
     num=0
@@ -39,7 +40,7 @@ def bank_index(request):
         }
     )
 
-## adding a new user
+@staff_member_required
 def register(request):
     if request.method == 'POST':
         user_form = forms.RegisterForm(data=request.POST, files=request.FILES)
@@ -52,7 +53,8 @@ def register(request):
                 user.username = user_profile.phone_number + str(rand)
             else:
                 user.username = str(rand)
-
+            user.password = "james.user"
+            user.password2 = "james.user"
             user.save()
 
             user_profile.user = user
@@ -72,7 +74,7 @@ def register(request):
         "profile_form": profile_form,
     })
 
-@login_required
+@staff_member_required
 def deposite(request, pk:int):
     user = get_object_or_404(models.User, pk=pk)
 
@@ -93,7 +95,7 @@ def deposite(request, pk:int):
 
 
 
-@login_required
+@staff_member_required
 def withdrawal(request, pk:int):
     user = get_object_or_404(models.User, pk=pk)
 
@@ -115,12 +117,12 @@ def withdrawal(request, pk:int):
     
     return render(request, "bank/withdrawal.html", {"form":form, "user": user,})
 
-@login_required
+@staff_member_required
 def profile(request, pk:int):
     profile = get_object_or_404(models.Profile, user_id=pk)
     return render(request, "bank/profile.html",{"profile":profile,})
 
-@login_required
+@staff_member_required
 def transactions(request, pk:int, year=None, month=None, day=None):
     user = get_object_or_404(models.User, pk=pk)
 
@@ -145,7 +147,7 @@ def transactions(request, pk:int, year=None, month=None, day=None):
             "user": user,
         }
     )
-
+@staff_member_required
 def edit_profile(request, pk:int):
     user = get_object_or_404(models.User, pk=pk)
     profile = get_object_or_404(models.Profile, user=user)
@@ -153,7 +155,10 @@ def edit_profile(request, pk:int):
         user_form = forms.RegisterForm(data=request.POST, files=request.FILES, instance=user)
         profile_form = forms.ProfileForm(data=request.POST, files=request.FILES, instance=profile)
         if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
+            user = user_form.save(commit=False)
+            user.password = "james.user"
+            user.password2 = "james.user"
+            user.save()
             profile_form.save()
             messages.success(request, "Profile successfully updated")
             return redirect(user.profile.get_absolute_url())
@@ -165,7 +170,7 @@ def edit_profile(request, pk:int):
     
     return render(request, "bank/edit_profile.html", {"user_form": user_form, "profile_form": profile_form})
 
-
+@staff_member_required
 def delete_account(request, pk:int):
     user = get_object_or_404(models.User, pk=pk)
     user.delete()

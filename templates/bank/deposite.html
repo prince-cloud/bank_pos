@@ -1,5 +1,5 @@
-{% extends 'bank_base.html' %}
-{% block title %} REGISTER {% endblock %}
+{% extends 'base.html' %}
+{% block title %} Deposite {% endblock %}
 {% load crispy_forms_tags %}
 {% load static %}
 
@@ -15,29 +15,34 @@
                     <h3 class="text-center text-bolder text-dark">Deposite</h3>
                     <h5 class="text-center text-bolder text-dark"> Acc. #: {{ user.profile.account_number }}</h5>
 
-                    <h5 class="text-center text-dark text-uppercase ">Name: {{ user.last_name }} {{ user.first_name }} </h5>
+                    <h5 class="text-center text-dark text-uppercase ">Name: {{ user.last_name }} {{ user.first_name }}
+                    </h5>
                     <br>
                     {% if form.errors %}
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                            <div class="alert alert-error">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                            {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                        <div class="alert alert-error">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                        {% endfor %}
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <div class="alert alert-error">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                    <div class="alert alert-error">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %}
                     {% endif %}
 
 
-                    <form method="POST" enctype="multipart/form-data" class="bg-white text-dark shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                        {% csrf_token %} 
+                    <form method="POST" enctype="multipart/form-data"
+                        class="bg-white text-dark shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        {% csrf_token %}
                         {{ form | crispy }}
 
-                        <p><input class="btn btn-dark btn-large" type="submit" value="Deposite"></p>
+
+                        <input id="submit" onclick="return confirm('Are you sure you want Deposite amount entered below to {{ user.profile.account_number }}')" class="btn btn-dark btn-large" type="submit"
+                            value="Deposite">
+
                     </form>
 
 

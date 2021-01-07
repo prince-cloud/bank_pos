@@ -10,8 +10,8 @@ class DateInput(forms.DateInput):
     input_type = "date"
 
 class RegisterForm(forms.ModelForm):
-    password2 = forms.CharField(label="Re-enter password", widget=forms.PasswordInput, )
-    password = forms.CharField(widget=forms.PasswordInput,  help_text="must be more than 6 characters")
+    #password2 = forms.CharField(label="Re-enter password", widget=forms.PasswordInput, )
+    #password = forms.CharField(widget=forms.PasswordInput,  help_text="must be more than 6 characters")
 
     class Meta:
         model = User
@@ -19,7 +19,7 @@ class RegisterForm(forms.ModelForm):
             "first_name",
             "last_name",
             "email",
-            "password",
+            #"password",
         )
 
     def __init__(self, *args, **kwargs):
