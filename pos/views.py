@@ -7,10 +7,10 @@ import datetime
 from . import models
 from . import forms
 # Create your views here.
-
 def index(request):
     return render(request, 'index.html')
 
+@login_required
 def pos_index(request):
     return render (request, 'pos/index.html', 
     {
