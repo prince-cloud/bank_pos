@@ -8,23 +8,15 @@
 </h5>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-4 text-center">
+        <div class="col-md-6 text-center">
             <div class="m-3 card grey-bg shadow">
-                <a href="{% url 'pos:history' %}" class="link">
+                <a href="{% url 'pos:sales_expenses' %}" class="link">
                     <img class="ind-img" src="{% static 'images/purchases.png' %}" alt="img not found">
                     <h3 class="">Sales & Expenses</h3>
                 </a>
             </div>
         </div>
-        <div class="col-md-4 text-center">
-            <div class="m-3 card grey-bg shadow">
-                <a class="link" id="product-link" href="{% url 'pos:drug_history' %}">
-                    <img class="ind-img" src="{% static 'images/itemlist.png' %}" alt="img not found">
-                    <h3 class="">Product</h3>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-6 text-center">
             <div class="m-3 card grey-bg shadow">
                 <a href="{% url 'pos:supply_history' %}" class="link" id="supply-link">
                     <img class="ind-img" src="{% static 'images/supplies.png' %}" alt="img not found">

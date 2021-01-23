@@ -40,7 +40,7 @@
                 let _month = parseInt(month.value);
 
                 let _day = parseInt(day.value);
-                let route = "{% url 'pos:history' %}";
+                let route = "{% url 'pos:sales_expenses' %}";
                 if (_year !== NaN && _year > 0) {
                     route += + _year;
                     if (_month !== NaN && _month > 0) {
@@ -85,7 +85,6 @@
                 <thead class="bg-dark text-white">
                     <tr>
                         <th> Date </th>
-                        <th> Customer </th>
                         <th> Items Sold </th>
                         <th> Qty </th>
                         <th>Total Sales</th>
@@ -94,24 +93,11 @@
                 <tbody>
                     {% for purchase in purchases %}
                     <tr>
-                        <td>{{ purchase.date }}</td>
-                        <td>{{ purchase.customer }}</td>
-                        <td>
-                            <ol>
-                                {% for itempurchase in purchase.item_purchases.all %}
-                                <li>{{ itempurchase.product }}</li>
-                                {% endfor %}
-                            </ol>
-                        </td>
-                        <td>
-                            <ol class="list-unstyled">
-                                {% for itempurchase in purchase.item_purchases.all %}
-                                <li>{{ itempurchase.quantity }}</li>
-                                {% endfor %}
-                            </ol>
-                        </td>
+                        <td>{{ purchase.date_created }}</td>
+                        <td>{{ purchase.product }}</td>
+                        <td>{{ purchase.quantity }}</td>
 
-                        <td><b> Ghc {{ purchase.total_amount }}</b></td>
+                        <td><b> Ghc {{ purchase.price }}</b></td>
 
                     </tr>
                     {% empty %}

@@ -10,11 +10,9 @@
             <a href="#" id="purchase-link" class="btn btn-lg btn-danger">New Purchase</a>
         </div>
     </div>
-    <form class="header-search-form shadow" method="GET" action="{% url 'pos:items_list' %}">
-
+    <form class="header-search-form shadow" method="GET" action="{% url 'pos:products_list' %}">
         <input id="input" class="" name="q" type="text" placeholder="Search ....">
         <input type="submit" value="Search" class="btn btn-primary" style="background-color: rgb(0, 192,192)">
-
     </form>
     <br>
     <div class="row ">
@@ -22,18 +20,18 @@
             <table class="table shadow table-striped table-hover white-bg">
                 <thead class="bg-dark text-white">
                     <tr>
+                        <th> # </th>
                         <th> Name </th>
                         <th> Description </th>
-                        <th> Unit price</th>
                         <th> Quantity </th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for product in products%}
                     <tr>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.description }}</td>
-                        <td>{{ product.price }}</td>
                         <td>{{ product.available_quantity }}</td>
                     </tr>
                     {% empty %}
@@ -50,7 +48,7 @@
 </div>
 
 <div class="myoverlay full-screen" id="purchase-view">
-    <i class="myclose btn btn-danger">X</i>
+    <i class="myclose btn btn-danger">&times;</i>
     <div class="container">
         {% include 'pos/add_purchase.html' %}
     </div>

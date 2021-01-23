@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4 text-center">
             <div class="m-3 card grey-bg shadow">
-                <a href="{% url 'pos:items_list' %}" class="link">
+                <a href="{% url 'pos:products_list' %}" class="link">
                     <img class="ind-img" src="{% static 'images/purchases.png' %}" alt="img not found">
                     <h3 class="">Purchase</h3>
                 </a>
@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-4 text-center">
             <div class="m-3 card grey-bg shadow">
-                <a href="{% url 'pos:history_page' %}" class="link">
+                <a href="{% url 'pos:history' %}" class="link">
                     <img class="ind-img" src="{% static 'images/history.png' %}" alt="img not found">
                     <h3 class="">History</h3>
                 </a>
@@ -86,7 +86,7 @@
 </div>
 
 <div class="myoverlay full-screen" id="supply-view">
-    <i class="myclose btn btn-danger">X</i>
+    <i class="myclose btn btn-danger">&times;</i>
     <div class="container">
         {% include 'pos/add_supply.html' %}
     </div>

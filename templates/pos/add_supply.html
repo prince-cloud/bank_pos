@@ -1,10 +1,9 @@
 
-
 {% load crispy_forms_tags %}
 
 
 <div class="container bg-gray p-5" style="width: 50%;">
-    <h2>Add supply details below</h2>
+    <h2>Add Supply</h2>
 
     <form method="POST" action="{% url 'pos:add_supply' %}?next=/">
         {% csrf_token %}
